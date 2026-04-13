@@ -1,13 +1,17 @@
 using UnityEngine;
 
 public class PathFinding : MonoBehaviour
-{
-    [SerializeField] WaveConfigSO waveConfig;
+{   
+    EnemySpawner enemySpawner;
+    WaveConfigSO waveConfig;
     Transform[] waypoints;
     int waypointIndex = 0;
 
+    [System.Obsolete]
     void Start()
     {
+        enemySpawner = FindFirstObjectByType<EnemySpawner>();
+        waveConfig = enemySpawner.GetCurrentWAve();
         waypoints = waveConfig.GetWayPoints();
         transform.position = waveConfig.GetStartingWaypoint().position;
     }

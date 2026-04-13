@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237201984849943041}
   - component: {fileID: 6733425334291269187}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,11 +101,13 @@ GameObject:
   m_Component:
   - component: {fileID: 145126534488851401}
   - component: {fileID: 736551750696934418}
+  - component: {fileID: -2136107510650129297}
   - component: {fileID: 3351302596423790313}
   - component: {fileID: 4910264809681643635}
-  - component: {fileID: 7124901583690951647}
+  - component: {fileID: 6082287810155621477}
   - component: {fileID: 5898629299878109472}
-  m_Layer: 0
+  - component: {fileID: 6102903848516054359}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +143,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 6
+--- !u!114 &-2136107510650129297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3686789482892905130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3a6c3d86196714991a38974a33aae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  health: 100
+  hitParticle: {fileID: 9112165373204925524, guid: 41b33f0ccf9beb64592d43e33a37d635, type: 3}
+  applyCameraShake: 1
 --- !u!114 &3351302596423790313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,15 +218,15 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.009741418, y: -0.07610089}
-  m_Size: {x: 1.8556917, y: 0.9429518}
-  m_Direction: 1
---- !u!70 &7124901583690951647
-CapsuleCollider2D:
+  m_Offset: {x: -0.008942127, y: -0.0031528473}
+  m_Size: {x: 1.0742755, y: 1.1545181}
+  m_Direction: 0
+--- !u!61 &6082287810155621477
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -224,7 +241,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -242,9 +259,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0065792166, y: 0.46399322}
-  m_Size: {x: 0.5623498, y: 0.1839046}
-  m_Direction: 1
+  m_Offset: {x: 0.005329728, y: -0.08480549}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.8634074, y: 1.0151501}
+  m_EdgeRadius: 0
 --- !u!50 &5898629299878109472
 Rigidbody2D:
   serializedVersion: 5
@@ -255,9 +281,9 @@ Rigidbody2D:
   m_GameObject: {fileID: 3686789482892905130}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -270,5 +296,25 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6102903848516054359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3686789482892905130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beb584e65cf5cc4ca2a639d2a6c9ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooter
+  projectilePrefab: {fileID: 7386127166544745005, guid: 0086ddc86ccd37d4fb308b11615c785b, type: 3}
+  projectileSpeed: 20
+  projectileLifeTime: 5
+  baseFireRate: 0.2
+  minimunFireRate: 0.02
+  fireRateVariance: 0
+  useAI: 0
+  isFiring: 0

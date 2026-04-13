@@ -1,0 +1,16 @@
+using UnityEngine;
+
+public class DamageDealer : MonoBehaviour
+{
+    [SerializeField] float damage = 10;
+
+    public float GetDamage()
+    {
+        return damage;
+    }
+
+    public void Hit()
+    {
+        Destroy(gameObject);
+    }
+}

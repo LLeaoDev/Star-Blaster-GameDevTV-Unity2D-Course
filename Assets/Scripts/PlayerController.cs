@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,23 +11,33 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float moveSpeed = 10f;
 
-
+    Shooter playerShooter;
+    InputAction fireAction;
 
     void Start()
     {
-        //initBounds();
-
+        playerShooter = GetComponent<Shooter>();
+        fireAction = InputSystem.actions.FindAction("Attack");
     }
 
     void Update()
     {
         movePlayer();
+        FireShooter();
     }
+
+    void FireShooter()
+    {
+        playerShooter.isFiring = fireAction.IsPressed();
+    }
+
 
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
+
+    
 
     void movePlayer()
     {
